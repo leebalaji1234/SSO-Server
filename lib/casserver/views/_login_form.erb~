@@ -1,0 +1,60 @@
+ 
+<!-- Page Content -->
+<div class="container">
+  <div id="formbox"  class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default" >
+      <div class="panel-heading">
+        <div class="panel-title">Log in</div>
+         
+      </div>  
+          <div  class="panel-body" >
+           <% if @message %>
+                 
+                <% if escape_html @message[:type] == "confirmation" %>
+		<div class="alert alert-success %>">
+                <% else %>
+                <div class="alert alert-danger %>">
+		<% end %>
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		 <%= escape_html @message[:message] %> 
+		</div>
+  <% end %>
+        <form method="post" action="<%= @form_action || "login" %>" id="login-form"
+      onsubmit="submitbutton = document.getElementById('login-submit'); submitbutton.value='<%= t.notice.please_wait %>'; submitbutton.disabled=true; return true;">
+        <div class="input-group">             
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+           
+ <input type="text" id="username" name="username" class="form-control" placeholder="Email"
+               size="32" tabindex="1" accesskey="u" />
+
+          
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+ 
+<input type="password" id="password" name="password" placeholder="Password" class= "form-control" autocomplete="off"
+               size="32" tabindex="2" accesskey="p" autocomplete="off" />
+        </div>
+
+           
+        <div  class="form-group submitbtn"> 
+          <div class="col-sm-12 controls"> 
+              
+<input type="hidden" id="lt" name="lt" value="<%= escape_html @lt %>" />
+        <input type="hidden" id="service" name="service" value="<%= escape_html @service %>" />
+        <input type="submit" class="btn btn-info btn-md btn-block" accesskey="l" value="<%= t.button.login %>"
+               tabindex="4" id="login-submit" />
+          </div>
+        </div>
+
+
+           
+        
+         
+<!-- /.container -->
+<!-- /.Page Content -->
+</div>
+</div>
+</div>
+</div>
